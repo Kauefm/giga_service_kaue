@@ -14,7 +14,8 @@
           <%= user.last_name.capitalize %> </p>
           <p> Sexo: <%= user.genre %> </p>
           <p> Email: <%= user.email %> </p>
-          <img class="card-user" src="<%= user.picture %>">
+          <p> Imagem: <%= user.avatar.url %> </p>
+          <img class="card-user" src="<%= user.avatar %>">
         </div>
       </div>
     <% end %>
