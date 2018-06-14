@@ -1,4 +1,7 @@
+
 <div class="container">
+<p> <%= page_entries_info @users %> </p>
+<p> <%= paginate @users %> </p>
   <div class="row">
     <% @users.each do |user| %>
       <div class="col-12 col-sm-4">

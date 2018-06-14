@@ -12,6 +12,7 @@ gem 'toastr-rails'
 gem 'autoprefixer-rails'
 gem 'simple_form'
 gem 'sass'
+gem 'kaminari'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'

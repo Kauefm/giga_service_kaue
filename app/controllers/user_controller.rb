@@ -26,6 +26,6 @@ class UserController < ApplicationController
       user.save
 
     end
-      @users = User.all.order(:first_name)
+      @users = User.all.order(:first_name).page params[:page]
   end
 end
