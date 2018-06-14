@@ -3,7 +3,7 @@ class UserController < ApplicationController
   def index
 
     User.all.each do |user|
-      user.destroy
+      user.delete
     end
 
     response =  RestClient.get "https://randomuser.me/api/?results=30&seed=giga&nat=br" #consult the API with seed = giga & 30 results & nationality = br
@@ -24,6 +24,7 @@ class UserController < ApplicationController
       user.email = result["email"] #select email
       user.picture = result["picture"]["large"] #picture address
       user.save
+
     end
       @users = User.all.order(:first_name)
   end

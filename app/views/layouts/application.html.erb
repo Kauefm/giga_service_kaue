@@ -6,6 +6,8 @@
     <meta name="keywords" content="Giga, Rails, API, Gigaservice">
     <meta name="author" content="Kauê Matteucci">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+
      <title>GigaServiceKaue</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
@@ -14,6 +16,7 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'shared/navbar' %>
+      <%= yield %>
   </body>
 </html>

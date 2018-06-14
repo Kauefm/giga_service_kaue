@@ -16,6 +16,10 @@
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   }
 
+  .card:hover{
+  opacity: 0.3;
+  }
+
 
 .card-user {
   position: absolute;
@@ -23,4 +27,31 @@
   top: 10px;
   width: 60px;
   border-radius: 50%;
+}
+
+.navbar {
+  height: 70px;
+  position: fixed;
+  margin-top: -70px;
+  width: 100%;
+  z-index: 1;
+  align-items: center;
+  justify-content: space-between;
+  background-color: blue;
+  color: white;
+  display: flex;
+}
+
+.container{
+  margin-top:70px;
+  width: 80hv;
+}
+
+.navbar-photo{
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  width: 50px;
+  border-radius: 50%;
+  z-index: 2;
 }
