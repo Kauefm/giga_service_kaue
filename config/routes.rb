@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
 root 'user#index'
 
-  get 'user/index'
+get 'user/index'
+get 'user/consult_api'
+get 'user/erase_db'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

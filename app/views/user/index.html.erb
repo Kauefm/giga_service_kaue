@@ -1,7 +1,12 @@
 <div class="container">
+
   <div class="card-pages">
-    <%= page_entries_info @users %>
-    <%= paginate @users %>
+    <div>
+      <%= link_to 'Carregar + 30 registros', user_consult_api_path, method: :get %>
+      <%= page_entries_info @users %>
+      <%= link_to 'Apagar dados', user_erase_db_path, method: :get %>
+      <%= paginate @users %>
+    </div>
   </div>
 
   <div class="row">
