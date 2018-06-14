@@ -1,11 +1,13 @@
-
 <div class="container">
-<p> <%= page_entries_info @users %> </p>
-<p> <%= paginate @users %> </p>
+  <div class="card-pages">
+    <%= page_entries_info @users %>
+    <%= paginate @users %>
+  </div>
+
   <div class="row">
     <% @users.each do |user| %>
       <div class="col-12 col-sm-4">
-        <div class="card">
+          <div class="card">
           <p> Nome:
           <%= user.title.capitalize %>
           <%= user.first_name.capitalize %>
