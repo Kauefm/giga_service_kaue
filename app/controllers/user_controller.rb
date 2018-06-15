@@ -1,7 +1,12 @@
 class UserController < ApplicationController
 
   def index
-    @users = User.all.order(:first_name).page params[:page]
+    if params[:query].present?
+      sql_query = "first_name ILIKE :query OR last_name ILIKE :query"
+      @users = User.where(sql_query, query: "%#{params[:query]}%").page params[:page]
+    else
+       @users = User.all.order(:first_name).page params[:page]
+    end
   end
 
   def consult_api
@@ -20,7 +25,7 @@ class UserController < ApplicationController
       user.last_name = result["name"]["last"] #select last name
       user.email = result["email"] #select email
       user.picture = result["picture"]["large"] #picture address
-      user.remote_avatar_url = user.picture
+      user.remote_avatar_url = user.picture #saving picture locally
       user.save!
     end
     redirect_to action:'index'

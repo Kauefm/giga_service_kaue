@@ -1,13 +1,26 @@
 <div class="container">
 
   <div class="card-pages">
-    <div>
-      <%= link_to 'Carregar + 30 registros', user_consult_api_path, method: :get %>
-      <%= page_entries_info @users %>
+    <div class= "row">
+
+      <div class="col-12 col-sm-4">
+        <%= link_to 'Carregar + 30 registros', user_consult_api_path, method: :get %>
+        <br> <%= page_entries_info @users %>
+      </div>
+
+      <div class="col-12 col-sm-4">
+          <%= form_tag user_index_path, method: :get do %>
+          <%= text_field_tag :query, params[:query], class: "form-control",placeholder: "Digite nome ou sobrenome a procurar"%>
+        <% end %>
+      </div>
+
+    <div class="col-12 col-sm-4">
       <%= link_to 'Apagar dados', user_erase_db_path, method: :get %>
-      <%= paginate @users %>
+        <br> <%= paginate @users %>
     </div>
   </div>
+</div>
+
 
   <div class="row">
     <% @users.each do |user| %>
