@@ -13,6 +13,3 @@
  *= require_tree .
  *= require_self
  */
-@import "toastr";
-@import "bootstrap-saas";
-@import "bootstrap";
