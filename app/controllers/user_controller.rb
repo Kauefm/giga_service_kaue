@@ -10,23 +10,28 @@ class UserController < ApplicationController
   end
 
   def consult_api
-    response =  RestClient.get "https://randomuser.me/api/?results=30&seed=giga&nat=br" #consult the API with seed = giga & 30 results & nationality = br
+    response =  RestClient.get "https://randomuser.me/api/?results=1000&seed=giga&nat=br" #consult the API with seed = giga & 30 results & nationality = br
+    byebugs
     repos = JSON.parse(response) # "parse das informações em JSON
     repos["results"].each do |result| #create a new instance of the model user
-      user = User.new
-      user.genre = result["gender"] #select gender
-      if user.genre == "male"
-        user.genre = "masculino"
-        else
-        user.genre = "feminino"
+      #byebug
+      search = User.where(first_name: "#{result["name"]["first"]}" , last_name: "#{result["name"]["last"]}")
+      if search.count == 0
+        user = User.new
+        user.genre = result["gender"] #select gender
+        if user.genre == "male"
+          user.genre = "masculino"
+          else
+          user.genre = "feminino"
+        end
+        user.title = result["name"]["title"] #select title
+        user.first_name = result["name"]["first"] #select first name
+        user.last_name = result["name"]["last"] #select last name
+        user.email = result["email"] #select email
+        user.picture = result["picture"]["large"] #picture address
+        user.remote_avatar_url = user.picture #saving picture locally
+        user.save!
       end
-      user.title = result["name"]["title"] #select title
-      user.first_name = result["name"]["first"] #select first name
-      user.last_name = result["name"]["last"] #select last name
-      user.email = result["email"] #select email
-      user.picture = result["picture"]["large"] #picture address
-      user.remote_avatar_url = user.picture #saving picture locally
-      user.save!
     end
     redirect_to action:'index'
   end
